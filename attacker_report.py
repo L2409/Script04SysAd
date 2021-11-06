@@ -27,12 +27,11 @@ def main():
                 ip_dict[ip] += 1
             except:
                 ip_dict[ip] = 1
-                print("NEW IP! ",ip)
 
     for entry in ip_dict:
         try:
-            #country = country
-            print("COUNT: ",ip_dict[entry], ", IP ADDR: ", entry, ", COUNTRY: ", "WIP", sep="")
+            match = geolite2.lookup(entry)
+            print("COUNT: ",ip_dict[entry], ", IP ADDR: ", entry, ", COUNTRY: ", match.country, sep="")
         except:
             pass
     
