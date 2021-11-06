@@ -20,7 +20,9 @@ def main():
     for line in file:
         if keyword in line:
             tokens = line.split(" ")
-            ip = tokens[11]
+            for token in tokens:
+                print(token)
+            ip = tokens[0]
             try:
                 ip_dict[ip] += 1
             except:
