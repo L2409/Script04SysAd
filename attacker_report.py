@@ -31,7 +31,7 @@ def main():
     for line in file:
         if keyword in line:
             tokens = line.split(" ")
-            ip = re.findall(r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$",line)
+            ip = re.findall("^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$",line)
             #Try to add to the dict at entry, if it doesn't exist then set dict[entry] to 1
             if len(ip) > 0:
                 print(ip[0])
