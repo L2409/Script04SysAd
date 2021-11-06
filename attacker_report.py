@@ -32,6 +32,7 @@ def main():
         if keyword in line:
             tokens = line.split(" ")
             ip = re.match(r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$",line)
+            print(ip)
             #Try to add to the dict at entry, if it doesn't exist then set dict[entry] to 1
             try:
                 ip_dict[ip] += 1
