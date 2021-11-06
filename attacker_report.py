@@ -18,6 +18,7 @@ def main():
         file = file.readlines()
     
     for line in file:
+        print(line)
         if keyword in line:
             tokens = line.split(" ")
             for token in tokens:
