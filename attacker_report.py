@@ -9,7 +9,7 @@ from datetime import date
 def main():
     os.system("clear")
     day = date.today()
-    filename = "/home/student/Desktop/Script04SysAd/attacker_report.py"
+    filename = "/home/student/Desktop/Script04SysAd/syslog.log"
     keyword = "Failed password"
     ip_dict = {}
     print("Attacker Report -",day,"\n")
@@ -18,12 +18,9 @@ def main():
         file = file.readlines()
     
     for line in file:
-        print(line)
         if keyword in line:
             tokens = line.split(" ")
-            for token in tokens:
-                print(token)
-            ip = tokens[0]
+            ip = tokens[11]
             try:
                 ip_dict[ip] += 1
             except:
