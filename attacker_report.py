@@ -31,14 +31,16 @@ def main():
     for line in file:
         if keyword in line:
             tokens = line.split(" ")
-            ip = re.findall("^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$",line)
+            ip = tokens[10]
+            #lines that contain both keyword and user have the ip at a different token
+            if "user" in line:
+                ip = tokens[12]
             #Try to add to the dict at entry, if it doesn't exist then set dict[entry] to 1
-            if len(ip) > 0:
-                print(ip[0])
+            if re.search("^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$",ip):
                 try:
-                    ip_dict[ip[0]] += 1
+                    ip_dict[ip] += 1
                 except:
-                    ip_dict[ip[0]] = 1
+                    ip_dict[ip] = 1
 
     #for each entry in dict grab the country from the ip and then print the line containing
     #its count, and the country that is associated with it
