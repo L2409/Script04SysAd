@@ -6,6 +6,7 @@
 from geoip import geolite2
 import os
 from datetime import date
+import re
 
 def main():
     #clears terminal
@@ -30,10 +31,7 @@ def main():
     for line in file:
         if keyword in line:
             tokens = line.split(" ")
-            ip = tokens[10]
-            #lines that contain both keyword and user have the ip at a different token
-            if "user" in line:
-                ip = tokens[12]
+            ip = re.match(r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$",line)
             #Try to add to the dict at entry, if it doesn't exist then set dict[entry] to 1
             try:
                 ip_dict[ip] += 1
@@ -45,7 +43,8 @@ def main():
     for entry in ip_dict:
         try:
             match = geolite2.lookup(entry)
-            print("COUNT: ",ip_dict[entry], ", IP ADDR: ", entry, ", COUNTRY: ", match.country, sep="")
+            if ip_dict[entry] >= 10:
+                print("COUNT: ",ip_dict[entry], ", IP ADDR: ", entry, ", COUNTRY: ", match.country, sep="")
         except:
             pass
     
