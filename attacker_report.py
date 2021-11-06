@@ -26,11 +26,15 @@ def main():
             try:
                 ip_dict[ip] += 1
             except:
-                ip_dict[ip] = 0
+                ip_dict[ip] = 1
                 print("NEW IP! ",ip)
 
     for entry in ip_dict:
-        print("COUNT: ",ip_dict[entry], ", IP ADDR: ", entry, ", COUNTRY: ", "WIP", sep="")
+        try:
+            #country = country
+            print("COUNT: ",ip_dict[entry], ", IP ADDR: ", entry, ", COUNTRY: ", "WIP", sep="")
+        except:
+            pass
     
 
 
