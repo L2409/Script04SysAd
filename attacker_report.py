@@ -9,7 +9,7 @@ from datetime import date
 def main():
     os.system("clear")
     day = date.today()
-    filename = "FILENAME"
+    filename = "/home/student/Desktop/Script04SysAd/attacker_report.py"
     keyword = "Failed password"
     ip_dict = {}
     print("Attacker Report -",day,"\n")
