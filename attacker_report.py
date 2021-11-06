@@ -35,8 +35,7 @@ def main():
             #lines that contain both keyword and user have the ip at a different token
             if "user" in line:
                 ip = tokens[12]
-            #Try to add to the dict at entry, if it doesn't exist then set dict[entry] to 1
-            print(re.match("^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$",line))
+            #Try to add to the dict at entry, if it doesn't exist then set dict[entry] to 1. Verify IP with a regex
             if re.search("^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$",ip):
                 try:
                     ip_dict[ip] += 1
@@ -59,3 +58,4 @@ if __name__ == "__main__":
     main()
 
 #Info on how to get date from: https://www.programiz.com/python-programming/datetime/current-datetime
+#Info on regex string from: https://www.geeksforgeeks.org/python-program-to-validate-an-ip-address/
