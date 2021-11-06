@@ -19,7 +19,6 @@ def main():
     
     for line in file:
         if keyword in line:
-            print(line)
             tokens = line.split(" ")
             ip = tokens[10]
             if "user" in line:
@@ -31,7 +30,7 @@ def main():
                 print("NEW IP! ",ip)
 
     for entry in ip_dict:
-        print("COUNT: ",ip_dict[entry], "IP ADDR: ", entry, "COUNTRY: ", "WIP", sep="")
+        print("COUNT: ",ip_dict[entry], ", IP ADDR: ", entry, ", COUNTRY: ", "WIP", sep="")
     
 
 
