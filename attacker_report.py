@@ -29,7 +29,7 @@ def main():
                 print("NEW IP! ",ip)
 
     for entry in ip_dict:
-        print("COUNT: ",ip_dict[entry], "IP ADDR: ", ip_dict[entry], "COUNTRY: ", "WIP", sep="")
+        print("COUNT: ",ip_dict[entry], "IP ADDR: ", entry, "COUNTRY: ", "WIP", sep="")
     
 
 
