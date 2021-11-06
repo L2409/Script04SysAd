@@ -19,8 +19,9 @@ def main():
     
     for line in file:
         if keyword in line:
+            print(line)
             tokens = line.split(" ")
-            ip = tokens[11]
+            ip = tokens[10]
             try:
                 ip_dict[ip] += 1
             except:
