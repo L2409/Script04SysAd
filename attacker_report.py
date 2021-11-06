@@ -22,6 +22,8 @@ def main():
             print(line)
             tokens = line.split(" ")
             ip = tokens[10]
+            if "user" in line:
+                ip = tokens[12]
             try:
                 ip_dict[ip] += 1
             except:
