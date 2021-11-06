@@ -32,12 +32,13 @@ def main():
         if keyword in line:
             tokens = line.split(" ")
             ip = re.findall(r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$",line)
-            print(ip)
             #Try to add to the dict at entry, if it doesn't exist then set dict[entry] to 1
-            try:
-                ip_dict[ip] += 1
-            except:
-                ip_dict[ip] = 1
+            if len(ip) > 0:
+                print(ip[0])
+                try:
+                    ip_dict[ip[0]] += 1
+                except:
+                    ip_dict[ip[0]] = 1
 
     #for each entry in dict grab the country from the ip and then print the line containing
     #its count, and the country that is associated with it
