@@ -36,6 +36,7 @@ def main():
             if "user" in line:
                 ip = tokens[12]
             #Try to add to the dict at entry, if it doesn't exist then set dict[entry] to 1
+            print(re.match("^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$",line))
             if re.search("^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$",ip):
                 try:
                     ip_dict[ip] += 1
