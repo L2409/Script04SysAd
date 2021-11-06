@@ -2,32 +2,46 @@
 #Logan Dorman
 #11/6/21
 
+#import geoip for the country of the ips, os for clear, and datetime for the date
 from geoip import geolite2
 import os
 from datetime import date
 
 def main():
+    #clears terminal
     os.system("clear")
+    #get todays date
     day = date.today()
+    #The location of the file
     filename = "/home/student/Desktop/Script04SysAd/syslog.log"
+    #What the system is looking for in a line
     keyword = "Failed password"
+    #Make a dicitonary that holds the ip as the key and the times the ip has appeared as the value
     ip_dict = {}
+    #print the header
     print("Attacker Report -",day,"\n")
 
+    #opens the filename as 'file'
     with open(filename) as file:
         file = file.readlines()
     
+    #for each line in the file if the line contains the keyword, then split it into tokens and grab
+    #the ip. Then put it in a dictionary.
     for line in file:
         if keyword in line:
             tokens = line.split(" ")
             ip = tokens[10]
+            #lines that contain both keyword and user have the ip at a different token
             if "user" in line:
                 ip = tokens[12]
+            #Try to add to the dict at entry, if it doesn't exist then set dict[entry] to 1
             try:
                 ip_dict[ip] += 1
             except:
                 ip_dict[ip] = 1
 
+    #for each entry in dict grab the country from the ip and then print the line containing
+    #its count, and the country that is associated with it
     for entry in ip_dict:
         try:
             match = geolite2.lookup(entry)
